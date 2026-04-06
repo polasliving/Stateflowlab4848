@@ -27,7 +27,8 @@ body {
   background: var(--paper);
   color: var(--ink);
   font-size: 16px;
-  line-height: 1.8;
+  line-height: 1.9;
+  letter-spacing: 0.025em;
   font-weight: 300;
   overflow-x: hidden;
 }
@@ -103,11 +104,11 @@ nav {
 .section-title {
   font-family: 'Noto Serif TC', serif;
   font-size: clamp(1.55rem, 3vw, 2.5rem);
-  font-weight: 300; line-height: 1.35; letter-spacing: 0.04em; margin-bottom: 16px;
+  font-weight: 300; line-height: 1.45; letter-spacing: 0.05em; margin-bottom: 20px;
 }
 .section-desc {
   font-size: 0.87rem; color: var(--ink-soft);
-  line-height: 1.95; font-weight: 300; margin-bottom: 40px;
+  line-height: 2.05; letter-spacing: 0.03em; font-weight: 300; margin-bottom: 40px;
 }
 
 /* BUTTONS */
@@ -396,12 +397,12 @@ nav {
   font-size: 0.78rem; color: var(--gold); font-weight: 400; letter-spacing: 0.06em;
 }
 .plan-card.feat .plan-who { color: var(--gold-light); }
-.plan-hook { font-size: 0.9rem; color: var(--ink-soft); line-height: 1.85; font-weight: 300; flex: 1; }
+.plan-hook { font-size: 0.9rem; color: var(--ink-soft); line-height: 1.95; letter-spacing: 0.03em; font-weight: 300; flex: 1; }
 .plan-card.feat .plan-hook { color: rgba(247,245,240,0.62); }
-.plan-feats { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+.plan-feats { list-style: none; display: flex; flex-direction: column; gap: 10px; }
 .plan-feats li {
   font-size: 0.84rem; color: var(--ink-soft);
-  display: flex; gap: 8px; align-items: flex-start; line-height: 1.55; font-weight: 300;
+  display: flex; gap: 8px; align-items: flex-start; line-height: 1.7; letter-spacing: 0.03em; font-weight: 300;
 }
 .plan-feats li::before { content: '—'; color: var(--gold); flex-shrink: 0; }
 .plan-card.feat .plan-feats li { color: rgba(247,245,240,0.62); }
@@ -501,6 +502,47 @@ nav {
   font-size: 0.82rem; color: var(--ink-mid); letter-spacing: 0.06em;
 }
 .payment-box-info strong { color: var(--ink); font-weight: 500; }
+
+/* ══ PERSONAS ══ */
+.persona-section { padding: 80px 48px; background: var(--paper); }
+.persona-inner { max-width: 960px; margin: 0 auto; }
+.persona-inner .section-eyebrow { justify-content: center; }
+.persona-inner .section-title { text-align: center; margin-bottom: 44px; }
+.persona-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
+}
+.persona-card {
+  background: #fff; border: 1px solid var(--line);
+  padding: 28px 24px; display: flex; flex-direction: column; gap: 0;
+}
+.persona-avatar {
+  width: 40px; height: 40px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Noto Serif TC', serif;
+  font-size: 1rem; font-weight: 400; color: var(--paper);
+  margin-bottom: 14px; flex-shrink: 0;
+}
+.persona-name {
+  font-size: 0.88rem; font-weight: 500; color: var(--ink);
+  letter-spacing: 0.04em; margin-bottom: 2px;
+}
+.persona-context {
+  font-size: 0.72rem; color: var(--ink-mute);
+  letter-spacing: 0.04em; margin-bottom: 16px; line-height: 1.5;
+}
+.persona-quote {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 0.8rem; color: var(--ink-soft); line-height: 1.9;
+  border-left: 2px solid var(--gold-pale); padding-left: 12px;
+  letter-spacing: 0.03em; font-weight: 300;
+}
+@media (max-width: 768px) {
+  .persona-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+  .persona-section { padding: 60px 20px; }
+}
+@media (max-width: 480px) {
+  .persona-grid { grid-template-columns: 1fr; }
+}
 
 /* ══ WHO IS IT FOR ══ */
 .who-section { padding: 90px 48px; background: var(--paper-warm); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
@@ -745,14 +787,14 @@ footer { background: #111; color: rgba(247,245,240,0.42); padding: 56px 48px 36p
   </h1>
 
   <p class="hero-tagline fi" style="transition-delay:.14s">
-    看懂自己人生節奏的一份報告
+    幫你看清卡點與下一步的結構化決策報告。
   </p>
 
   <p class="hero-sub fi" style="transition-delay:.2s">
-    很多人努力生活，<br>
-    卻從來沒有看過自己的人生結構。<br><br>
-    4848 將<strong>生命節律 × 性格特質 × 人生選擇</strong><br>
-    整理成一份可以理解的決策分析報告。
+    適合正在卡在工作選擇、關係判斷、人生方向的人。<br>
+    輸入出生資料與問題，取得對應分析與決策建議。<br><br>
+    你不是沒能力，而是不知道自己到底卡在哪裡。<br>
+    <strong>4848</strong>　用結構化方式，幫你拆出人生卡點、判斷風險、整理下一步。
   </p>
 
   <div class="hero-btns fi" style="transition-delay:.28s">
@@ -769,36 +811,75 @@ footer { background: #111; color: rgba(247,245,240,0.42); padding: 56px 48px 36p
 <!-- ══ RESONANCE ══ -->
 <section class="resonance-section">
   <div class="resonance-inner">
-    <p class="section-eyebrow fi">你是否正在這些時刻</p>
-    <h2 class="section-title fi" style="max-width:600px">很多時候問題不是能力，<br>而是沒有一張理解自己的人生結構圖。</h2>
+    <p class="section-eyebrow fi">你是不是也有這種感覺</p>
+    <h2 class="section-title fi" style="max-width:620px">你沒有比別人差，<br>只是還沒有人幫你把卡點說清楚。</h2>
     <div class="resonance-grid">
       <div class="resonance-list">
         <div class="res-item fi">
           <div class="res-dot"></div>
-          <p>工作方向感覺卡住，努力了很久卻還是原地踏步</p>
+          <p>你努力過、也換過方向——但那個「哪裡不對」的感覺還是在，你開始不確定是不是自己的問題</p>
         </div>
         <div class="res-item fi">
           <div class="res-dot"></div>
-          <p>面臨人生重要選擇，卻不知道哪條路更適合自己</p>
+          <p>要做決定的時候，你分析很多、問很多人——最後反而更亂，乾脆就拖著不決定</p>
         </div>
         <div class="res-item fi">
           <div class="res-dot"></div>
-          <p>想知道自己真正適合什麼樣的發展方向</p>
+          <p>你知道自己想要什麼，但不知道「現在」這個時機對不對——怕衝了是錯的，怕等了又錯過</p>
         </div>
         <div class="res-item fi">
           <div class="res-dot"></div>
-          <p>對未來感到模糊，不知道現在是不是一個重要的轉折點</p>
+          <p>同樣的問題一直回來：工作繞圈、關係卡住、選擇反覆——你不明白為什麼換了情境還是一樣</p>
         </div>
         <div class="res-item fi">
           <div class="res-dot"></div>
-          <p>想理解自己的生命節奏，為什麼某些事總是在特定時間出現</p>
+          <p>你偶爾會想：「是不是我天生就不適合？」——但你也不相信這個答案</p>
         </div>
       </div>
       <div class="resonance-conclusion fi">
-        <p>很多困惑，</p>
-        <p><strong>其實是三件事<br>沒有被一起看見。</strong></p>
-        <p style="font-size:.85rem; color:rgba(247,245,240,0.6)">當生命節律、個人特質、人生選擇<br>被整合在同一份報告裡，<br>很多答案其實早就在那裡。</p>
+        <p>這不是你不夠好，</p>
+        <p><strong>是你從來沒有<br>一張屬於自己的結構圖。</strong></p>
+        <p style="font-size:.85rem; color:rgba(247,245,240,0.6)">看清楚自己的性格底層、生命節律、<br>以及當下選擇的邏輯，<br>很多「為什麼偏偏是我」會突然有了答案。</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PERSONAS ══ -->
+<section class="persona-section">
+  <div class="persona-inner">
+    <p class="section-eyebrow fi">你是哪一種</p>
+    <h2 class="section-title fi">這些人，<br>都在找同一個答案。</h2>
+    <div class="persona-grid">
+
+      <div class="persona-card fi">
+        <div class="persona-avatar" style="background:#8b9bb4;">小</div>
+        <div class="persona-name">小薇，32歲</div>
+        <div class="persona-context">上班族，考慮換工作中</div>
+        <p class="persona-quote">「我不知道現在跳槽是對的嗎？萬一跳了更糟怎麼辦。」</p>
+      </div>
+
+      <div class="persona-card fi" style="transition-delay:.06s">
+        <div class="persona-avatar" style="background:#9ba89b;">阿</div>
+        <div class="persona-name">阿明，38歲</div>
+        <div class="persona-context">自營工作者，收入不穩</div>
+        <p class="persona-quote">「我努力了好幾年，為什麼還是一直在原地打轉？」</p>
+      </div>
+
+      <div class="persona-card fi" style="transition-delay:.12s">
+        <div class="persona-avatar" style="background:#b4979b;">珊</div>
+        <div class="persona-name">珊珊，29歲</div>
+        <div class="persona-context">剛分手，感情卡關</div>
+        <p class="persona-quote">「我到底哪裡出了問題，為什麼每段感情都走不長？」</p>
+      </div>
+
+      <div class="persona-card fi" style="transition-delay:.18s">
+        <div class="persona-avatar" style="background:#a89b7a;">阿</div>
+        <div class="persona-name">阿嬌，45歲</div>
+        <div class="persona-context">中年轉型期</div>
+        <p class="persona-quote">「孩子大了，我想重新開始，但不知道從哪裡下手。」</p>
+      </div>
+
     </div>
   </div>
 </section>
@@ -856,27 +937,27 @@ footer { background: #111; color: rgba(247,245,240,0.42); padding: 56px 48px 36p
 <!-- ══ SELF TEST ══ -->
 <section class="test-section">
   <div class="test-inner">
-    <p class="section-eyebrow fi">你是否有這三個感覺</p>
-    <h2 class="section-title fi">如果你有其中兩個，<br>代表你可能正在一個重要的人生節點。</h2>
+    <p class="section-eyebrow fi">對照看看</p>
+    <h2 class="section-title fi">如果你有其中兩個，<br>你現在的困惑可能有具體的結構原因。</h2>
     <div class="test-q-grid fi">
       <div class="test-q">
         <div class="test-q-num">1</div>
-        <strong>明明很努力</strong>
-        <p>但方向總是模糊，感覺在原地繞圈，找不到突破口。</p>
+        <strong>你很努力，但結果一直不對</strong>
+        <p>不是懶，不是笨。但就是感覺在用力划水，船卻沒有前進。</p>
       </div>
       <div class="test-q">
         <div class="test-q-num">2</div>
-        <strong>常常在選擇時猶豫很久</strong>
-        <p>理性分析了很多，但還是不確定哪個選項才是對的。</p>
+        <strong>你分析了很多，還是不敢決定</strong>
+        <p>不是缺資訊。是不知道哪個才是「對你來說對的選項」。</p>
       </div>
       <div class="test-q">
         <div class="test-q-num">3</div>
-        <strong>感覺人生有某種節奏</strong>
-        <p>某些事總在特定時期反覆出現，但你說不清楚為什麼。</p>
+        <strong>同樣的問題一直重複出現</strong>
+        <p>換了工作、換了方向，但那個卡點還是在。你開始懷疑是不是自己的問題。</p>
       </div>
     </div>
     <div class="test-conclusion fi">
-      <p>這時候，理解自己的<strong>人生結構</strong>會很重要。</p>
+      <p>這不是性格缺陷，<strong>是還沒有人幫你把結構說清楚。</strong></p>
     </div>
     <div class="fi">
       <a href="https://docs.google.com/forms/d/1fNzKy-3Y7wdn3-7grRQNflSHYJIYfl8v0J1IUPKSBXg/edit" target="_blank" class="btn-outline">先體驗心流測驗</a>
@@ -947,82 +1028,108 @@ footer { background: #111; color: rgba(247,245,240,0.42); padding: 56px 48px 36p
 
     <div class="plans-grid fi" style="transition-delay:.12s">
 
-      <!-- ① 499 快速體驗版 -->
+      <!-- ① 499 體驗版 -->
       <div class="plan-card">
-        <span class="plan-tag">① 入口體驗</span>
+        <span class="plan-tag">入門</span>
         <div>
           <div class="plan-price"><sup>NT$</sup>499</div>
-          <div class="plan-name">快速體驗版</div>
-          <p class="plan-who">適合想先了解自己目前生命狀態的人</p>
+          <div class="plan-name">體驗版</div>
         </div>
-        <p class="plan-hook">
-          擷取過往人生每 10 年重要事件或節點的分析。<br><br>
-          快速看見你的人生結構與今年的運勢位置，找到一個值得留意的方向。
+        <p class="plan-hook">「我到底是什麼類型的人？」</p>
+        <p style="font-size:0.84rem; color:var(--ink-soft); line-height:1.85; margin-bottom:20px;">
+          根據你的出生時間，用八字命盤幫你找出：你天生的做事方式、容易卡在哪、這幾年的人生在走什麼方向。
         </p>
         <ul class="plan-feats">
-          <li>人生每 10 年重要節點解析</li>
-          <li>今年運勢位置判讀</li>
-          <li>一個值得留意的發展方向</li>
+          <li>你的個性底層是什麼——不是星座那種模糊，是具體的行為傾向</li>
+          <li>你的人生每個十年在「練習什麼」</li>
+          <li>你現在這幾年的大方向是什麼</li>
+          <li>2026–2027 怎麼走比較順</li>
+          <li>一份「對到你就會有感」的驗證清單</li>
         </ul>
-        <a href="https://docs.google.com/forms/d/1cH6WO0bRm9BaPtOT01PiVcTbRmFNtQhkycJHpPt7qh0/edit" target="_blank" class="plan-btn">選擇此方案</a>
+        <p class="plan-who" style="margin-bottom:20px;">適合你，如果：你第一次想試試看這類分析，或只是好奇「這東西準不準」。</p>
+        <a href="https://docs.google.com/forms/d/1cH6WO0bRm9BaPtOT01PiVcTbRmFNtQhkycJHpPt7qh0/edit" target="_blank" class="plan-btn">我要試試 499 →</a>
+        <div style="margin-top:12px;">
+          <div style="margin-bottom:4px; font-size:0.7rem; color:var(--ink-mute); letter-spacing:0.04em;">▸ 想先看看報告長什麼樣？</div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;">
+            <a href="https://drive.google.com/file/d/1161BD5aDuQ3swhm56mibwTSKInlBaebn/view?usp=sharing" target="_blank" style="font-size:0.7rem;color:var(--gold);text-decoration:none;letter-spacing:0.06em;border-bottom:1px solid rgba(184,154,92,0.35);padding-bottom:1px;transition:opacity 0.2s;" onmouseover="this.style.opacity='.65'" onmouseout="this.style.opacity='1'">範本 體驗版報告</a>
+          </div>
+        </div>
       </div>
 
-      <!-- ② 999 問題聚焦版 -->
+      <!-- ② 999 深度版 -->
       <div class="plan-card">
-        <span class="plan-tag">② 問題聚焦</span>
+        <span class="plan-tag">進階</span>
         <div>
           <div class="plan-price"><sup>NT$</sup>999</div>
-          <div class="plan-name">問題聚焦版</div>
-          <p class="plan-who">適合想拆解人生底盤的人</p>
+          <div class="plan-name">深度版</div>
           <p style="font-size:0.72rem; color:var(--ink-mute); margin-top:4px; font-weight:300; letter-spacing:0.04em;">原價 NT$1,599</p>
         </div>
-        <p class="plan-hook">
-          不只看你是誰，更看你「為什麼會在這個狀態」。<br><br>
-          掌握性格底盤、人生慣性、節律變化，洞察現在所在的時間窗與內在驅動力，幫你看清自己，也看懂下一步方向。
+        <p class="plan-hook">「我知道問題在哪，但為什麼就是改不掉？」</p>
+        <p style="font-size:0.84rem; color:var(--ink-soft); line-height:1.85; margin-bottom:20px;">
+          在 499 的基礎上，多了一層「心理節律」分析——不只說你是什麼人，還解釋你的大腦怎麼運作、為什麼你會在同一個地方一直繞圈圈。
         </p>
         <ul class="plan-feats">
-          <li>性格底盤與人生慣性分析</li>
-          <li>節律變化深度解讀</li>
-          <li>時間窗口判讀</li>
-          <li>內在驅動力洞察</li>
-          <li>下一步方向建議</li>
+          <li>包含 499 的全部內容</li>
+          <li>你為什麼同時想衝、又怕失去穩定——背後的原因</li>
+          <li>你容易踩的三個坑，以及怎麼避開</li>
+          <li>你現在的選項 A、B、C，哪個先做、哪個之後做</li>
+          <li>具體的四個行動階段，告訴你從哪裡開始</li>
         </ul>
-        <a href="https://docs.google.com/forms/d/1cH6WO0bRm9BaPtOT01PiVcTbRmFNtQhkycJHpPt7qh0/edit" target="_blank" class="plan-btn">選擇此方案</a>
-        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:-8px;">
-          <a href="https://docs.google.com/document/d/1LrQ6YQaxuYGMaBOp06shzNOdDj9igmHZ/edit" target="_blank" style="font-size:0.7rem;color:var(--gold);text-decoration:none;letter-spacing:0.06em;border-bottom:1px solid rgba(184,154,92,0.35);padding-bottom:1px;transition:opacity 0.2s;" onmouseover="this.style.opacity='.65'" onmouseout="this.style.opacity='1'">▸ 範本 A 工作事業版</a>
-          <a href="https://docs.google.com/document/d/16vP0RKq_rTNGEDOvtKVLhEUYl_tDa8Sj/edit" target="_blank" style="font-size:0.7rem;color:var(--gold);text-decoration:none;letter-spacing:0.06em;border-bottom:1px solid rgba(184,154,92,0.35);padding-bottom:1px;transition:opacity 0.2s;" onmouseover="this.style.opacity='.65'" onmouseout="this.style.opacity='1'">▸ 範本 B 感情關係版</a>
+        <p class="plan-who" style="margin-bottom:20px;">適合你，如果：你已經有一個「卡很久的問題」，想弄清楚根源在哪，以及下一步該怎麼走。</p>
+        <a href="https://docs.google.com/forms/d/1cH6WO0bRm9BaPtOT01PiVcTbRmFNtQhkycJHpPt7qh0/edit" target="_blank" class="plan-btn">我要了解 999 →</a>
+        <div style="margin-top:12px;">
+          <div style="margin-bottom:4px; font-size:0.7rem; color:var(--ink-mute); letter-spacing:0.04em;">▸ 想先看看報告長什麼樣？</div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;">
+            <a href="https://docs.google.com/document/d/1LrQ6YQaxuYGMaBOp06shzNOdDj9igmHZ/edit" target="_blank" style="font-size:0.7rem;color:var(--gold);text-decoration:none;letter-spacing:0.06em;border-bottom:1px solid rgba(184,154,92,0.35);padding-bottom:1px;transition:opacity 0.2s;" onmouseover="this.style.opacity='.65'" onmouseout="this.style.opacity='1'">範本 A 工作事業版</a>
+            <a href="https://docs.google.com/document/d/16vP0RKq_rTNGEDOvtKVLhEUYl_tDa8Sj/edit" target="_blank" style="font-size:0.7rem;color:var(--gold);text-decoration:none;letter-spacing:0.06em;border-bottom:1px solid rgba(184,154,92,0.35);padding-bottom:1px;transition:opacity 0.2s;" onmouseover="this.style.opacity='.65'" onmouseout="this.style.opacity='1'">範本 B 感情關係版</a>
+          </div>
         </div>
       </div>
 
       <!-- ③ 1599 深度解析旗艦版 FEATURED -->
       <div class="plan-card feat">
-        <div class="plan-badge">★ 期間限定優惠</div>
-        <span class="plan-tag">③ 旗艦完整版</span>
+        <div class="plan-badge">★ 期間限定．限量開放</div>
+        <span class="plan-tag">旗艦</span>
         <div>
           <div class="plan-price"><sup>NT$</sup>1599</div>
-          <div class="plan-name">深度解析旗艦版</div>
-          <p class="plan-who" style="color:var(--gold-light)">適合想真正理解卡點、正在做重大決定的人</p>
-          <p style="font-size:0.72rem; color:rgba(247,245,240,0.45); margin-top:4px; font-weight:300; letter-spacing:0.04em;">原價 NT$2,199｜期間限定優惠價</p>
+          <div class="plan-name">整合版</div>
+          <p class="plan-who" style="color:var(--gold-light)">原價 NT$2,199｜期間限定優惠價</p>
         </div>
-        <p class="plan-hook">
-          系統性解析你的人生結構，看懂結構與卡點，並給出 <strong style="color:var(--gold-light)">30 天可驗證的行動方向</strong>，讓決定不再只靠感覺。<br><br>
-          從 <strong style="color:var(--gold-light)">生命節奏 × 個人特質 × 現實選擇</strong> 三個層面整合分析，協助你做出重要決策。
+        <p class="plan-hook">「我有一個重要決定要做，我需要完整的答案。」</p>
+        <p style="font-size:0.84rem; color:rgba(247,245,240,0.75); line-height:1.85; margin-bottom:20px;">
+          同時用三種不同的分析工具來看你的問題，三個工具都指向同一個結論，才算有效。最後給你唯一的行動主線，不是一堆選項讓你自己猜。
         </p>
         <ul class="plan-feats">
-          <li>人生結構系統性解析</li>
-          <li>卡點根源深度判讀</li>
-          <li>生命節奏 × 個人特質 × 現實選擇 三線整合</li>
-          <li>30 天可驗證行動方向</li>
-          <li>重要決策結構化輔助</li>
+          <li>包含 499＋999 的全部內容</li>
+          <li>加入「科學決策」分析——用心理學解釋你為何在這個時間點猶豫</li>
+          <li>三個工具交叉比對，確認答案一致</li>
+          <li>用你過去幾個關鍵年份驗證準確度</li>
+          <li><strong style="color:var(--gold-light)">明確的月份行動表：4月做什麼、6月做什麼、9月做什麼</strong></li>
+          <li>最後只給你一條主線——不給模糊建議</li>
         </ul>
-        <a href="https://docs.google.com/forms/d/1cH6WO0bRm9BaPtOT01PiVcTbRmFNtQhkycJHpPt7qh0/edit" target="_blank" class="plan-btn">選擇旗艦方案 →</a>
+        <p class="plan-who" style="color:rgba(247,245,240,0.65); margin-bottom:20px;">適合你，如果：你面前有個重要決定，必須在某個期限前做選擇，你需要有依據、有順序的完整答案。</p>
+        <a href="https://docs.google.com/forms/d/1cH6WO0bRm9BaPtOT01PiVcTbRmFNtQhkycJHpPt7qh0/edit" target="_blank" class="plan-btn">我要了解 1599 →</a>
+        <div style="margin-top:12px;">
+          <div style="margin-bottom:4px; font-size:0.7rem; color:rgba(247,245,240,0.45); letter-spacing:0.04em;">▸ 想先看看報告長什麼樣？</div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;">
+            <a href="https://drive.google.com/file/d/1BLib-p4VBJ4eKy0lOyZj_RgNoll8RXYQ/view?usp=drive_link" target="_blank" style="font-size:0.7rem;color:var(--gold-light);text-decoration:none;letter-spacing:0.06em;border-bottom:1px solid rgba(212,184,122,0.35);padding-bottom:1px;transition:opacity 0.2s;" onmouseover="this.style.opacity='.65'" onmouseout="this.style.opacity='1'">範本 整合版報告</a>
+          </div>
+        </div>
       </div>
 
     </div>
 
-    <!-- ── 單點突破 ── -->
+    <!-- 防猶豫說明 -->
+    <div class="plans-intro-block fi" style="margin-top:28px; transition-delay:.14s; font-size:0.84rem; line-height:1.9;">
+      <p>
+        <strong>不知道選哪個？</strong>　先從 499 開始。讀完如果有「這說的就是我」的感覺，再考慮升級 999 或 1599。<br>
+        每個價位都是獨立完整的，往上升級不會浪費——更深的報告會在原本基礎上繼續延伸。
+      </p>
+    </div>
+
+    <!-- ── 重大決策 ── -->
     <div class="plan-category fi" style="transition-delay:.16s; margin-top: 52px;">
-      <div class="plan-category-label">單點突破</div>
+      <div class="plan-category-label">重大決策</div>
       <div class="plan-category-bar"></div>
     </div>
 
@@ -1086,27 +1193,27 @@ footer { background: #111; color: rgba(247,245,240,0.42); padding: 56px 48px 36p
 <section class="who-section" id="who">
   <div class="who-inner">
     <p class="section-eyebrow fi">這份報告適合誰</p>
-    <h2 class="section-title fi" style="margin-bottom:0">正在思考人生的你</h2>
+    <h2 class="section-title fi" style="margin-bottom:0">你聽過「努力就會成功」，<br>但你現在需要的不是這句話。</h2>
     <div class="who-grid">
       <div class="who-item fi">
         <div class="who-num">01</div>
-        <h4>正在思考人生方向</h4>
-        <p>對未來感到模糊，需要一個清晰的結構來理解自己的下一步</p>
+        <h4>卡住了，但不知道卡在哪</h4>
+        <p>你不懶，也不是沒想過。只是每次想清楚一點，又繞回原點——你需要有人幫你把結構說出來</p>
       </div>
       <div class="who-item fi" style="transition-delay:.06s">
         <div class="who-num">02</div>
-        <h4>想更理解自己</h4>
-        <p>想知道自己的天賦與性格模式，了解為什麼某些事對你特別困難或容易</p>
+        <h4>要做決定，但怕做錯</h4>
+        <p>工作、感情、方向——這個決定的代價太高，你不想再靠感覺，你需要有依據的判斷</p>
       </div>
       <div class="who-item fi" style="transition-delay:.12s">
         <div class="who-num">03</div>
-        <h4>面臨重要選擇</h4>
-        <p>創業、轉職、感情、生活重心的重大決策，需要一個有結構的判斷依據</p>
+        <h4>努力了很久，結果卻不對</h4>
+        <p>你懷疑過是不是自己的問題。但更可能的是：時機不對、方式不適合你——這是可以被看見的</p>
       </div>
       <div class="who-item fi" style="transition-delay:.18s">
         <div class="who-num">04</div>
-        <h4>對生命節奏有興趣</h4>
-        <p>感覺人生有某種規律，想理解自己的生命節奏與自我探索的方向</p>
+        <h4>想在做決定前，先看清楚</h4>
+        <p>不是要算命，是想要一份有結構的分析，讓你在做重要選擇前，至少知道自己站在哪裡</p>
       </div>
     </div>
   </div>
@@ -1169,15 +1276,15 @@ footer { background: #111; color: rgba(247,245,240,0.42); padding: 56px 48px 36p
   <div class="cta-inner">
     <p class="section-eyebrow fi">現在開始</p>
     <h2 class="section-title fi" style="margin-bottom:18px">
-      理解自己的人生結構，<br>往往是很多改變的開始。
+      繼續猜下去，<br>代價比一份報告更高。
     </h2>
     <p class="section-desc fi">
-      填寫 Google 表單，提供出生資料與主題方向，<br>
-      我們依你的方案生成一份只屬於你的正式報告。<br>
-      每位客戶都是獨立案件，不沿用任何前例。
+      填寫 Google 表單，提供出生資料與你的問題方向，<br>
+      我們為你生成一份完全獨立的結構分析報告。<br>
+      <strong>每位客戶都是獨立案件，不沿用任何前例。</strong>
     </p>
     <div class="cta-btns fi">
-      <a href="https://docs.google.com/forms/d/1cH6WO0bRm9BaPtOT01PiVcTbRmFNtQhkycJHpPt7qh0/edit" target="_blank" class="btn-gold">申請我的人生決策報告 →</a>
+      <a href="https://docs.google.com/forms/d/1cH6WO0bRm9BaPtOT01PiVcTbRmFNtQhkycJHpPt7qh0/edit" target="_blank" class="btn-gold">我要申請這份報告 →</a>
       <a href="https://docs.google.com/forms/d/1fNzKy-3Y7wdn3-7grRQNflSHYJIYfl8v0J1IUPKSBXg/edit" target="_blank" class="btn-ghost">先體驗心流測驗</a>
     </div>
   </div>
@@ -1188,15 +1295,16 @@ footer { background: #111; color: rgba(247,245,240,0.42); padding: 56px 48px 36p
   <div class="brand-inner">
     <p class="section-eyebrow fi">品牌理念</p>
     <p class="brand-quote fi">
-      「很多人努力生活，<br>
-      卻從來沒有看見自己的人生結構。」
+      「你不是沒能力，<br>
+      你只是還沒有看清楚自己的結構。」
     </p>
     <p class="brand-body fi">
-      4848 的工作很簡單：<br><br>
-      把人生節奏與選擇邏輯，<br>
-      整理成一份可以理解的報告。<br><br>
-      讓人生的重要選擇，<br>
-      不再只是猜測。
+      4848 做的事很具體：<br><br>
+      把你的生命節律、性格底層與當下的選擇，<br>
+      整理成一份有依據、可追蹤的分析報告。<br><br>
+      不是要預測你的未來，<br>
+      是讓你在做重要決定之前，<br>
+      至少有一份屬於自己的結構可以參考。
     </p>
     <div class="fi">
       <a href="https://docs.google.com/forms/d/1cH6WO0bRm9BaPtOT01PiVcTbRmFNtQhkycJHpPt7qh0/edit" target="_blank" class="btn-dark">立即申請報告 →</a>
@@ -1212,7 +1320,7 @@ footer { background: #111; color: rgba(247,245,240,0.42); padding: 56px 48px 36p
       <div class="footer-brand-sub">4848 · 人生決策結構報告</div>
       <p class="footer-desc">
         融合四柱八字、吠陀系統與行為科學的正式報告服務。<br>
-        聯繫信箱：<a href="mailto:o438557@gmail.com" class="footer-email">o438557@gmail.com</a>
+        聯繫信箱：<a href="/cdn-cgi/l/email-protection#402f74737875757700272d21292c6e232f2d" class="footer-email"><span class="__cf_email__" data-cfemail="6a055e59525f5f5d2a0d070b030644090507">[email&#160;protected]</span></a>
       </p>
     </div>
     <div class="footer-cols">
@@ -1237,7 +1345,7 @@ footer { background: #111; color: rgba(247,245,240,0.42); padding: 56px 48px 36p
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 
 function openModal(idx) {
   var imgs = document.querySelectorAll('.testi-img-wrap img');
@@ -1283,11 +1391,9 @@ setTimeout(() => {
 // Nav shrink on scroll
 const nav = document.getElementById('mainnav');
 window.addEventListener('scroll', () => {
-  const isW = window.innerWidth > 960;
-  nav.style.padding = window.scrollY > 50
-    ? (isW ? '12px 48px' : '10px 24px')
-    : (isW ? '18px 48px' : '14px 24px');
-}, { passive: true });
+  nav.style.padding = window.scrollY > 40 ? '10px 48px' : '18px 48px';
+});
+
 </script>
 </body>
 </html>
