@@ -22,6 +22,7 @@
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { max-width: 100%; overflow-x: hidden; }
 
   html { scroll-behavior: smooth; }
 
@@ -117,7 +118,7 @@
   .mobile-menu a { display: block; padding: 0.7rem 0; color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
 
   /* ── COMMON ── */
-  .section { padding: 90px 5%; }
+  .section { padding: 90px 5%; box-sizing: border-box; width: 100%; overflow-x: hidden; }
   .section-alt { background: var(--white); }
   .section-dark { background: var(--ink); color: var(--white); }
   .section-gold { background: var(--gold-pale); }
@@ -243,6 +244,8 @@
     background: var(--white); padding: 2.2rem 2rem;
     position: relative; overflow: hidden;
     transition: box-shadow 0.25s;
+    box-sizing: border-box; width: 100%;
+    word-break: keep-all; overflow-wrap: break-word;
   }
   .persona-card::before {
     content: ''; position: absolute; left: 0; top: 0;
@@ -283,28 +286,39 @@
     margin-top: 3rem;
   }
   .deliverable-item {
-    background: var(--white); padding: 2rem 2.2rem;
-    display: flex; gap: 1.4rem; align-items: flex-start;
-    overflow: hidden;        /* 防止整體超出 */
+    background: var(--white);
+    padding: 1.6rem 1.4rem;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    overflow: hidden;
+    box-sizing: border-box;
+    width: 100%;
   }
   .deliverable-num {
-    font-family: 'Cormorant Garamond'; font-size: 2.2rem;
-    color: var(--gold); font-weight: 300; line-height: 1; flex-shrink: 0;
-    min-width: 36px;
+    font-family: 'Cormorant Garamond'; font-size: 2rem;
+    color: var(--gold); font-weight: 300; line-height: 1;
+    flex: 0 0 32px;          /* fixed width, never grow/shrink */
+    width: 32px;
   }
-  /* min-width:0 是 flexbox 子元素防溢出的關鍵 */
   .deliverable-content {
-    min-width: 0;            /* 允許 flex 子元素縮小至容器寬 */
-    flex: 1;
+    flex: 1 1 0%;            /* grow, shrink, basis=0 */
+    min-width: 0;
     word-break: keep-all;
     overflow-wrap: break-word;
+    overflow: hidden;
   }
   .deliverable-content h4 {
     font-family: 'Noto Serif TC'; font-size: 1rem; font-weight: 500;
     margin-bottom: 0.5rem; color: var(--ink);
     word-break: keep-all;
+    overflow-wrap: break-word;
   }
-  .deliverable-content p { font-size: 0.9rem; color: var(--mid); line-height: 1.88; word-break: keep-all; }
+  .deliverable-content p {
+    font-size: 0.9rem; color: var(--mid); line-height: 1.88;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
   .deliverable-note { text-align: center; color: var(--mid); font-size: 0.78rem; margin-top: 2rem; font-style: italic; }
 
   /* ── 04 METHOD ── */
@@ -401,6 +415,8 @@
     background: var(--white); padding: 2.4rem 2rem;
     display: flex; flex-direction: column;
     position: relative; overflow: hidden;
+    box-sizing: border-box; width: 100%;
+    min-width: 0; word-break: keep-all;
   }
   .plan-card.featured {
     background: var(--ink); color: var(--white);
@@ -495,15 +511,29 @@
   .plan-decision .btn a:hover { background: var(--gold); color: var(--white); }
   .plans-note {
     background: var(--white); border: 1px solid var(--border);
-    padding: 1.4rem 1.8rem; margin-top: 2.5rem;
+    padding: 1.4rem 1.4rem; margin-top: 2.5rem;
     font-size: 0.9rem; color: var(--mid); line-height: 1.8;
-    display: flex; gap: 1rem; align-items: flex-start;
+    display: flex; gap: 0.75rem; align-items: flex-start;
     overflow: hidden;
+    box-sizing: border-box;
+    width: 100%;
+    word-break: keep-all;
+    overflow-wrap: break-word;
   }
-  .plans-note::before { content: '—'; color: var(--gold); flex-shrink: 0; }
-  /* plans-note 文字容器也需要 min-width:0 */
-  .plans-note > span, .plans-note > p, .plans-note > div {
-    min-width: 0; flex: 1; word-break: keep-all; overflow-wrap: break-word;
+  .plans-note::before {
+    content: '—'; color: var(--gold);
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+  .plans-note span {
+    flex: 1 1 0%;
+    min-width: 0;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+  .plans-note a {
+    word-break: break-all;   /* LINE ID 等連結強制換行 */
+    overflow-wrap: break-word;
   }
 
   /* ── 08 TESTIMONIALS ── */
