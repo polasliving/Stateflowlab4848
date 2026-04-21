@@ -629,57 +629,134 @@
   footer .footer-divider { width: 32px; height: 1px; background: rgba(255,255,255,0.15); margin: 1.2rem auto; }
 
   /* ── RESPONSIVE ── */
-  /* Mobile typography boosts */
+  /* ── MOBILE ≤480px: typography & line-break fix ── */
   @media (max-width: 480px) {
-    body { font-size: 15px; }
-    .hero-desc {
+
+    /* ① 全域中文斷行修正：僅在標點換行 */
+    body {
+      font-size: 15px;
       word-break: keep-all;
       overflow-wrap: break-word;
-      font-size: 0.9rem;
     }
-    .hero-title em { font-size: 1.7rem; }
-    .plan-fit-item, .plan-get-item { font-size: 0.93rem; }
-    .persona-desc, .persona-quote { font-size: 0.93rem; }
-    .faq-q span { font-size: 0.95rem; }
-    .faq-a { font-size: 0.93rem; }
-    .deliverable-content p, .method-card p { font-size: 0.93rem; }
-    .testimonial-case-row { font-size: 0.88rem; }
-    .plans-note { font-size: 0.88rem; }
-    .hero-desc { font-size: 0.93rem; }
-    .lead { font-size: 0.93rem; }
-    h2 { font-size: 1.35rem; }
+
+    /* ② Hero 說明文字：靠左讀、不置中，避免最後孤行 */
+    .hero-desc {
+      text-align: left;
+      font-size: 0.91rem;
+      line-height: 1.85;
+      max-width: 100%;
+      padding: 0 0.2rem;
+    }
+    .hero-title em { font-size: 1.65rem; }
+
+    /* ③ Section 引言段落：置左、不跨欄截斷 */
+    .section-intro { text-align: left; }
+    .section-intro .label { justify-content: flex-start; }
+    .lead {
+      font-size: 0.91rem;
+      text-align: left;
+      word-break: keep-all;
+    }
+
+    /* ④ 方法論收尾句 */
+    .method-closing {
+      text-align: left;
+      font-size: 0.91rem;
+      word-break: keep-all;
+    }
+
+    /* ⑤ 卡片內容 */
+    .deliverable-content h4,
+    .deliverable-content p,
+    .method-card p,
+    .persona-desc,
+    .persona-quote,
+    .plan-desc,
+    .plan-fit-item,
+    .plan-get-item,
+    .not-for-text,
+    .testimonial-case-row,
+    .plans-note,
+    .faq-a,
+    .brand-story p {
+      font-size: 0.91rem;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+    }
+
+    /* ⑥ 標題大小 */
+    h2 { font-size: 1.35rem; word-break: keep-all; }
+    .faq-q span { font-size: 0.93rem; word-break: keep-all; }
+
+    /* ⑦ Hero 按鈕文字不截斷 */
+    .btn-primary, .btn-outline {
+      font-size: 0.88rem;
+      white-space: normal;
+      word-break: keep-all;
+      text-align: center;
+    }
+
+    /* ⑧ 章節間距縮緊，手機更緊湊 */
+    .section { padding: 56px 5%; }
   }
 
+  /* ── TABLET / LARGE MOBILE ≤900px ── */
   @media (max-width: 900px) {
     .nav-links, .nav-cta { display: none; }
     .hamburger { display: flex; }
+
+    /* 全域 keep-all（平板以下） */
+    body { word-break: keep-all; overflow-wrap: break-word; }
+
     .persona-grid, .deliverable-grid, .method-grid,
     .plan-cards, .testimonial-cases, .samples-grid { grid-template-columns: 1fr; }
     .screenshots-grid { grid-template-columns: repeat(2, 1fr); }
     .plan-decision { flex-direction: column; gap: 2rem; padding: 2rem; }
     .plan-decision::before { display: none; }
+
+    /* Hero title 垂直堆疊：4848 上方小字，人生結構分析 大字不斷行 */
     .hero-title {
       font-size: 1.9rem;
-      display: flex; flex-direction: column; align-items: center;
-      gap: 0.2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.25rem;
     }
-    /* On mobile: hide the ｜ separator, stack vertically */
     .title-sep { display: none; }
     .hero-title .brand-num {
-      font-size: 1.2rem;
-      letter-spacing: 0.12em;
+      font-size: 1.1rem;
+      letter-spacing: 0.14em;
     }
     .hero-title em {
       font-size: 1.85rem;
       display: block;
       white-space: nowrap;
     }
-    .hero-btns { flex-direction: column; align-items: center; }
+
+    /* Hero desc 靠左 */
+    .hero-desc {
+      text-align: left;
+      max-width: 100%;
+      word-break: keep-all;
+    }
+
+    /* Lead 靠左 */
+    .lead { text-align: left; word-break: keep-all; }
+
+    /* Section intro */
+    .section-intro { text-align: left; }
+    .section-intro .label { justify-content: flex-start; }
+
+    /* Method closing */
+    .method-closing { text-align: left; word-break: keep-all; }
+
+    .hero-btns { flex-direction: column; align-items: stretch; }
+    .hero-btns a { text-align: center; }
+
     .section { padding: 64px 5%; }
   }
   @media (max-width: 600px) {
     .screenshots-grid { grid-template-columns: repeat(2, 1fr); }
-    .persona-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
