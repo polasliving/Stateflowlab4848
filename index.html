@@ -437,7 +437,7 @@
     display: flex; align-items: center; gap: 0.8rem;
     margin: 3.5rem 0 1.5rem;
     flex-wrap: wrap;             /* wrap tag to next line on mobile */
-    overflow: hidden;
+    overflow: visible;
   }
   .plans-group-label h3 {
     font-family: 'Noto Serif TC'; font-size: 1.2rem; font-weight: 700;
@@ -574,7 +574,9 @@
   /* 上半：左右並排 */
   .plan-decision-inner {
     display: flex; gap: 3rem; align-items: flex-start;
+    word-break: keep-all; overflow-wrap: break-word;
   }
+  
   .plan-decision-left { flex: 1; }
   .plan-decision-right { flex: 1; }
   /* 下方：全寬金色按鈕 */
@@ -892,8 +894,8 @@
     .persona-grid, .deliverable-grid, .method-grid,
     .plan-cards, .testimonial-cases, .samples-grid { grid-template-columns: 1fr; }
     .screenshots-grid { grid-template-columns: repeat(2, 1fr); }
-    .plan-decision { gap: 1.5rem; padding: 1.8rem; }
-    .plan-decision-inner { flex-direction: column; gap: 1.5rem; }
+    .plan-decision { gap: 1.5rem; padding: 1.6rem; overflow: hidden; }
+    .plan-decision-inner { flex-direction: column; gap: 1.5rem; word-break: keep-all; overflow-wrap: break-word; }
     .plan-decision::before { display: none; }
 
     /* Hero title 垂直堆疊：4848 上方小字，人生結構分析 大字不斷行 */
@@ -948,6 +950,28 @@
 
     /* hero desc centre on tablet */
     .hero-desc { text-align: center; }
+
+    /* plans-group-label: tag wraps to new line, no overflow */
+    .plans-group-label {
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: center;
+      overflow: visible;
+    }
+    .plans-group-label::after { display: none; }
+    .plans-group-label .tag {
+      order: 3;                  /* push tag after h3 */
+      max-width: 100%;
+      white-space: normal;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+      box-sizing: border-box;
+    }
+
+    /* plan-type, plan-fit-title readable on mobile */
+    .plan-type { font-size: 1.05rem; }
+    .plan-fit-title, .plan-get-title { font-size: 0.98rem; }
+    .plan-card h3 { font-size: 1.1rem; }
   }
   @media (max-width: 600px) {
     .screenshots-grid { grid-template-columns: repeat(2, 1fr); }
