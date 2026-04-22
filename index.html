@@ -481,9 +481,14 @@
     letter-spacing: 0.06em; font-weight: 600;
   }
   .plan-type {
-    font-size: 0.7rem; letter-spacing: 0.14em; color: var(--gold);
-    text-transform: uppercase; margin-bottom: 0.6rem; font-weight: 600;
-    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 0.95rem; letter-spacing: 0.06em; color: var(--gold);
+    text-transform: none; margin-bottom: 0.5rem; font-weight: 700;
+    font-family: 'Noto Serif TC', serif;
+    display: inline-flex; align-items: center; gap: 0.5rem;
+  }
+  .plan-type::before {
+    content: ''; display: inline-block; width: 18px; height: 2px;
+    background: var(--gold); border-radius: 2px; flex-shrink: 0;
   }
   .plan-card h3 {
     font-family: 'Noto Serif TC'; font-size: 1.25rem; font-weight: 700;
@@ -498,8 +503,16 @@
   .plan-divider { border: none; border-top: 1px solid var(--border); margin: 1.2rem 0; }
   .plan-card.featured .plan-divider { border-color: rgba(255,255,255,0.15); }
   .plan-fit-title, .plan-get-title {
-    font-size: 0.72rem; letter-spacing: 0.1em; color: var(--gold);
-    text-transform: uppercase; margin-bottom: 0.7rem; font-weight: 700;
+    font-size: 0.92rem; letter-spacing: 0.05em; color: var(--gold);
+    text-transform: none; margin-bottom: 0.8rem; font-weight: 700;
+    font-family: 'Noto Serif TC', serif;
+    display: inline-flex; align-items: center; gap: 0.45rem;
+    padding-bottom: 0.3rem;
+    border-bottom: 1.5px solid var(--gold-pale);
+  }
+  .plan-fit-title::before, .plan-get-title::before {
+    content: ''; display: inline-block; width: 14px; height: 2px;
+    background: var(--gold); border-radius: 2px; flex-shrink: 0;
   }
   .plan-fit-item, .plan-get-item {
     font-size: 0.89rem; color: var(--ink); padding: 0.3rem 0;
@@ -541,25 +554,48 @@
   /* Decision plan */
   .plan-decision {
     background: var(--ink); color: var(--white);
-    padding: 2.8rem 3rem; display: flex;
-    gap: 3rem; align-items: flex-start;
+    padding: 2.8rem 3rem;
+    display: flex; flex-direction: column; gap: 2.5rem;
     position: relative; overflow: hidden;
   }
   .plan-decision::before {
-    content: 'B'; position: absolute; right: 2rem; top: 50%;
+    content: 'B'; position: absolute; right: 2rem; top: 40%;
     transform: translateY(-50%);
     font-family: 'Cormorant Garamond'; font-size: 8rem;
     color: rgba(255,255,255,0.04); font-weight: 400; pointer-events: none;
   }
+  /* 上半：左右並排 */
+  .plan-decision-inner {
+    display: flex; gap: 3rem; align-items: flex-start;
+  }
   .plan-decision-left { flex: 1; }
   .plan-decision-right { flex: 1; }
+  /* 下方：全寬金色按鈕 */
+  .plan-decision-btn {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 2rem;
+  }
+  .plan-decision-btn a {
+    display: inline-block;
+    background: linear-gradient(135deg, #c9a96e 0%, #b89a5c 50%, #9a7f48 100%);
+    color: var(--white);
+    padding: 1rem 3rem; text-decoration: none; font-size: 0.92rem;
+    letter-spacing: 0.08em; border-radius: 2px; transition: all 0.3s;
+    font-weight: 600;
+    box-shadow: 0 2px 14px rgba(184,154,92,0.4);
+  }
+  .plan-decision-btn a:hover {
+    background: linear-gradient(135deg, #b89a5c 0%, #9a7f48 100%);
+    box-shadow: 0 4px 20px rgba(184,154,92,0.5);
+    transform: translateY(-1px);
+  }
   .plan-decision h3 { font-family: 'Noto Serif TC'; font-size: 1.1rem; font-weight: 500; color: var(--white); margin-bottom: 0.5rem; }
   .plan-decision .plan-type { color: var(--gold-light); }
   .plan-decision .plan-price { color: var(--white); }
   .plan-decision .plan-tagline { color: rgba(255,255,255,0.7); }
   .plan-decision .plan-desc { color: rgba(255,255,255,0.75); }
   .plan-decision .plan-get-item { color: rgba(255,255,255,0.75); }
-  .plan-decision .plan-get-title { color: var(--gold-light); }
+  .plan-decision .plan-get-title { color: var(--gold-light); border-bottom-color: rgba(212,184,122,0.2); }
   .plan-decision .plan-divider { border-color: rgba(255,255,255,0.15); }
   .plan-decision-note {
     font-size: 0.75rem; color: rgba(255,255,255,0.45); line-height: 1.7; margin-top: 1rem;
@@ -837,7 +873,8 @@
     .persona-grid, .deliverable-grid, .method-grid,
     .plan-cards, .testimonial-cases, .samples-grid { grid-template-columns: 1fr; }
     .screenshots-grid { grid-template-columns: repeat(2, 1fr); }
-    .plan-decision { flex-direction: column; gap: 2rem; padding: 2rem; }
+    .plan-decision { gap: 1.5rem; padding: 1.8rem; }
+    .plan-decision-inner { flex-direction: column; gap: 1.5rem; }
     .plan-decision::before { display: none; }
 
     /* Hero title 垂直堆疊：4848 上方小字，人生結構分析 大字不斷行 */
@@ -1173,35 +1210,39 @@
       <span class="tag">適合：眼前已有具體選擇要拆的人</span>
     </div>
     <div class="plan-decision">
-      <div class="plan-decision-left">
-        <p class="plan-type">重大決策版</p>
-        <h3>把眼前最重要的一個選擇，拆得更清楚。</h3>
-        <p class="plan-price">NT$1,599</p>
-        <p class="plan-tagline" style="margin-top:0.3rem">針對重要選擇設計的決策版本</p>
-        <hr class="plan-divider" style="border-color:rgba(255,255,255,0.15); margin:1.2rem 0">
-        <p class="plan-desc">
-          這不是看整體走向的延伸版本，而是針對重要選擇設計的決策版本。當下你有一個具體問題要做判斷，例如要不要離職、要不要合作、要不要分手、要不要搬家，重大決策版會比單看整體更適合。
-        </p>
-        <p class="plan-desc">
-          它會在整盤底盤之上，進一步鎖定單一主決策，幫你拆選項、看代價、辨認風險，並整理接下來 30 天的行動順序。
-        </p>
-        <div class="btn">
-          <a href="https://lihi.vip/WuNzM" target="_blank">申請「重大決策版」</a>
+      <!-- 上半：左右兩欄 -->
+      <div class="plan-decision-inner">
+        <div class="plan-decision-left">
+          <p class="plan-type">重大決策版</p>
+          <h3>把眼前最重要的一個選擇，拆得更清楚。</h3>
+          <p class="plan-price">NT$1,599</p>
+          <p class="plan-tagline" style="margin-top:0.3rem">針對重要選擇設計的決策版本</p>
+          <hr class="plan-divider" style="border-color:rgba(255,255,255,0.15); margin:1.2rem 0">
+          <p class="plan-desc">
+            這不是看整體走向的延伸版本，而是針對重要選擇設計的決策版本。當下你有一個具體問題要做判斷，例如要不要離職、要不要合作、要不要分手、要不要搬家，重大決策版會比單看整體更適合。
+          </p>
+          <p class="plan-desc">
+            它會在整盤底盤之上，進一步鎖定單一主決策，幫你拆選項、看代價、辨認風險，並整理接下來 30 天的行動順序。
+          </p>
+        </div>
+        <div class="plan-decision-right">
+          <p class="plan-fit-title" style="color:rgba(212,184,122,0.95)">適合這樣的你</p>
+          <p class="plan-get-item" style="color:rgba(255,255,255,0.8)">現在最想處理的，不是整體狀態，而是某一個具體選擇。</p>
+          <p class="plan-get-item" style="color:rgba(255,255,255,0.8)">擔心的不是資訊不夠，而是看不清每個選項背後的代價。</p>
+          <p class="plan-get-item" style="color:rgba(255,255,255,0.8)">知道這一題會影響後面很多事，所以不想只靠直覺決定。</p>
+          <p class="plan-get-item" style="color:rgba(255,255,255,0.8)">想先把最重要的一題判斷清楚，再決定下一步。</p>
+          <hr class="plan-divider" style="border-color:rgba(255,255,255,0.15); margin:1.2rem 0">
+          <p class="plan-get-title" style="color:rgba(212,184,122,0.95)">你會拿到的重點</p>
+          <p class="plan-get-item" style="color:rgba(255,255,255,0.8)">單一重大決策的核心拆解</p>
+          <p class="plan-get-item" style="color:rgba(255,255,255,0.8)">主要選項的代價與風險點</p>
+          <p class="plan-get-item" style="color:rgba(255,255,255,0.8)">容易失手的判斷盲點</p>
+          <p class="plan-get-item" style="color:rgba(255,255,255,0.8)">接下來 30 天的行動順序與提醒</p>
+          <p class="plan-decision-note">＊ 本版一次聚焦一個主決策題，其他問題會作為背景條件參考。若決策題、時間窗或資料不夠清楚，完整度會依條件調整。</p>
         </div>
       </div>
-      <div class="plan-decision-right">
-        <p class="plan-fit-title" style="color:rgba(212,184,122,0.9)">適合這樣的你</p>
-        <p class="plan-get-item" style="color:rgba(255,255,255,0.75)">現在最想處理的，不是整體狀態，而是某一個具體選擇。</p>
-        <p class="plan-get-item" style="color:rgba(255,255,255,0.75)">擔心的不是資訊不夠，而是看不清每個選項背後的代價。</p>
-        <p class="plan-get-item" style="color:rgba(255,255,255,0.75)">知道這一題會影響後面很多事，所以不想只靠直覺決定。</p>
-        <p class="plan-get-item" style="color:rgba(255,255,255,0.75)">想先把最重要的一題判斷清楚，再決定下一步。</p>
-        <hr class="plan-divider" style="border-color:rgba(255,255,255,0.15); margin:1.2rem 0">
-        <p class="plan-get-title" style="color:rgba(212,184,122,0.9)">你會拿到的重點</p>
-        <p class="plan-get-item" style="color:rgba(255,255,255,0.75)">單一重大決策的核心拆解</p>
-        <p class="plan-get-item" style="color:rgba(255,255,255,0.75)">主要選項的代價與風險點</p>
-        <p class="plan-get-item" style="color:rgba(255,255,255,0.75)">容易失手的判斷盲點</p>
-        <p class="plan-get-item" style="color:rgba(255,255,255,0.75)">接下來 30 天的行動順序與提醒</p>
-        <p class="plan-decision-note">＊ 本版一次聚焦一個主決策題，其他問題會作為背景條件參考。若決策題、時間窗或資料不夠清楚，完整度會依條件調整。</p>
+      <!-- 下方：全寬按鈕 -->
+      <div class="plan-decision-btn">
+        <a href="https://lihi.vip/WuNzM" target="_blank">申請「重大決策版」</a>
       </div>
     </div>
 
