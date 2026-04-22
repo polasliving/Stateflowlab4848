@@ -14,11 +14,15 @@
     --gold: #b89a5c;
     --gold-light: #d4b87a;
     --gold-pale: #f0e8d8;
-    --mid: #524e4a;      /* darkened for WCAG AA contrast on light bg */
+    --mid: #3d3a38;          /* AA contrast on all bg */
     --mid-light: #7a7470;
     --border: #e0dbd0;
     --white: #ffffff;
     --card-bg: #faf9f6;
+    --section-warm: #f5ede0;  /* 暖橙米 */
+    --section-stone: #ede4d8; /* 深石灰米 */
+    --section-sage: #e6ebe3;  /* 鼠尾草綠（加深） */
+    --section-dusk: #1e1c1a;  /* 深褐 near-black */
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -124,31 +128,48 @@
   .section-gold { background: var(--gold-pale); }
   .container { max-width: 1080px; margin: 0 auto; overflow-x: hidden; }
   .label {
-    font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase;
-    color: var(--gold); font-family: 'Noto Sans TC', sans-serif; font-weight: 500;
-    margin-bottom: 1rem; display: block;
+    font-size: 0.9rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--gold); font-family: 'Noto Sans TC', sans-serif; font-weight: 600;
+    margin-bottom: 1.2rem; display: block;
+  }
+  /* 區塊型小標：帶左色條 */
+  .label-block {
+    font-size: 1rem; letter-spacing: 0.1em;
+    color: var(--gold); font-family: 'Noto Serif TC', serif; font-weight: 600;
+    margin-bottom: 1.4rem; display: inline-flex; align-items: center; gap: 0.7rem;
+  }
+  .label-block::before {
+    content: ''; display: inline-block; width: 28px; height: 2.5px;
+    background: var(--gold); flex-shrink: 0; border-radius: 2px;
   }
   h2 {
-    font-family: 'Noto Serif TC', serif; font-weight: 400;
-    font-size: clamp(1.45rem, 3.5vw, 2.1rem); line-height: 1.5;
-    margin-bottom: 0.5rem;
+    font-family: 'Noto Serif TC', serif; font-weight: 600;
+    font-size: clamp(1.5rem, 3.5vw, 2.1rem); line-height: 1.5;
+    margin-bottom: 0.5rem; color: var(--ink);
   }
-  .lead { color: var(--mid); font-size: 0.95rem; line-height: 1.95; margin-top: 0.8rem; }
+  .lead { color: #3a3633; font-size: 0.96rem; line-height: 1.95; margin-top: 0.8rem; font-weight: 400; }
   .gold-line { width: 32px; height: 1.5px; background: var(--gold); margin: 1.5rem 0; }
   .btn-primary {
-    display: inline-block; background: var(--ink); color: var(--white);
-    padding: 0.88rem 2.2rem; text-decoration: none; font-size: 0.88rem;
-    letter-spacing: 0.07em; border-radius: 2px; transition: all 0.25s;
-    font-family: 'Noto Sans TC', sans-serif; font-weight: 400;
+    display: inline-block;
+    background: linear-gradient(135deg, #c9a96e 0%, #b89a5c 50%, #9a7f48 100%);
+    color: var(--white);
+    padding: 1rem 2.4rem; text-decoration: none; font-size: 0.9rem;
+    letter-spacing: 0.08em; border-radius: 2px; transition: all 0.3s;
+    font-family: 'Noto Sans TC', sans-serif; font-weight: 500;
+    box-shadow: 0 2px 12px rgba(184,154,92,0.35);
   }
-  .btn-primary:hover { background: var(--gold); }
+  .btn-primary:hover {
+    background: linear-gradient(135deg, #b89a5c 0%, #9a7f48 100%);
+    box-shadow: 0 4px 18px rgba(184,154,92,0.45);
+    transform: translateY(-1px);
+  }
   .btn-outline {
-    display: inline-block; border: 1px solid var(--ink); color: var(--ink);
-    padding: 0.8rem 1.8rem; text-decoration: none; font-size: 0.85rem;
-    letter-spacing: 0.08em; border-radius: 2px; transition: all 0.25s;
-    font-family: 'Noto Sans TC', sans-serif; font-weight: 400;
+    display: inline-block; border: 1.5px solid var(--gold); color: var(--gold);
+    padding: 0.95rem 2rem; text-decoration: none; font-size: 0.88rem;
+    letter-spacing: 0.08em; border-radius: 2px; transition: all 0.3s;
+    font-family: 'Noto Sans TC', sans-serif; font-weight: 500;
   }
-  .btn-outline:hover { background: var(--ink); color: var(--white); }
+  .btn-outline:hover { background: var(--gold); color: var(--white); transform: translateY(-1px); }
   .btn-gold {
     display: inline-block; background: var(--gold); color: var(--white);
     padding: 0.85rem 2rem; text-decoration: none; font-size: 0.85rem;
@@ -184,15 +205,15 @@
   }
   .hero > * { position: relative; z-index: 1; }
   .hero-eyebrow {
-    font-size: 0.75rem; letter-spacing: 0.18em; color: var(--gold);
-    font-family: 'Noto Sans TC'; font-weight: 400; margin-bottom: 1.6rem;
+    font-size: 0.72rem; letter-spacing: 0.22em; color: var(--gold);
+    font-family: 'Noto Sans TC'; font-weight: 600; margin-bottom: 1.4rem;
     text-transform: uppercase;
   }
   .hero-title {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2.4rem, 6vw, 4rem);
-    font-weight: 400; letter-spacing: 0.03em; line-height: 1.3;
-    margin-bottom: 0.5rem;
+    font-size: clamp(2.8rem, 7vw, 5rem);
+    font-weight: 600; letter-spacing: 0.02em; line-height: 1.2;
+    margin-bottom: 0.6rem;
   }
   .hero-title em { font-style: italic; color: var(--gold); }
   .title-sep {
@@ -215,25 +236,35 @@
     display: inline-block;
   }
   .hero-sub {
-    font-family: 'Noto Sans TC'; font-size: 0.68rem;
-    letter-spacing: 0.12em; color: var(--mid); margin-bottom: 2.2rem;
+    font-family: 'Noto Sans TC'; font-size: 0.7rem;
+    letter-spacing: 0.14em; color: var(--mid-light); margin-bottom: 2rem;
   }
   .hero-desc {
-    max-width: 520px; color: var(--mid); font-size: 0.95rem;
+    max-width: 520px;
+    font-size: 1rem;
     line-height: 1.95; margin-bottom: 2.8rem;
+    text-align: center;
   }
-  .hero-desc strong { color: var(--ink); font-weight: 500; }
+  .hero-desc .hero-tagline {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1.12rem;
+    font-weight: 600;
+    color: var(--ink);
+    display: block;
+    margin-bottom: 1.1rem;
+    line-height: 1.7;
+    letter-spacing: 0.02em;
+  }
+  .hero-desc .hero-meta {
+    color: var(--mid);
+    font-size: 0.9rem;
+    line-height: 1.9;
+    display: block;
+  }
+  .hero-desc strong { color: var(--ink); font-weight: 600; }
   .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
-  .scroll-hint {
-    margin-top: 3.5rem; font-size: 0.7rem; letter-spacing: 0.12em;
-    color: var(--gold); text-transform: uppercase;
-    display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
-  }
-  .scroll-hint::after {
-    content: ''; display: block; width: 1px; height: 40px;
-    background: var(--gold); animation: scrollDown 1.8s infinite;
-  }
-  @keyframes scrollDown { 0%,100%{opacity:0;transform:scaleY(0) translateY(0)} 30%{opacity:1;transform:scaleY(1) translateY(0)} 80%{opacity:0;transform:scaleY(1) translateY(20px)} }
+  .scroll-hint { display: none; }
+  @keyframes scrollDown { 0%,100%{opacity:0} }
 
   /* ── 02 PAIN POINTS ── */
   .persona-grid {
@@ -241,12 +272,16 @@
     margin-top: 3rem;
   }
   .persona-card {
-    background: var(--white); padding: 2.2rem 2rem;
+    background: var(--section-warm); padding: 2.2rem 2rem;
     position: relative; overflow: hidden;
     transition: box-shadow 0.25s;
     box-sizing: border-box; width: 100%;
     word-break: keep-all; overflow-wrap: break-word;
+    border-bottom: 3px solid var(--gold-pale);
+    border-top: 3px solid transparent;
+    transition: border-top 0.25s, box-shadow 0.25s;
   }
+  .persona-card:hover { border-top-color: var(--gold); }
   .persona-card::before {
     content: ''; position: absolute; left: 0; top: 0;
     width: 3px; height: 100%; background: var(--gold-pale);
@@ -271,9 +306,10 @@
     margin-bottom: 0.8rem;
   }
   .persona-tag {
-    display: inline-block; background: var(--gold-pale);
-    color: var(--gold); font-size: 0.75rem; font-weight: 400; padding: 0.22rem 0.75rem;
-    border-radius: 12px; letter-spacing: 0.05em;
+    display: inline-block;
+    background: linear-gradient(135deg, #c9a96e 0%, #b89a5c 100%);
+    color: var(--white); font-size: 0.75rem; font-weight: 500; padding: 0.28rem 0.85rem;
+    border-radius: 12px; letter-spacing: 0.06em;
   }
   .section-intro {
     max-width: 640px; margin: 0 auto 1rem; text-align: center;
@@ -286,7 +322,7 @@
     margin-top: 3rem;
   }
   .deliverable-item {
-    background: var(--white);
+    background: var(--section-warm);
     padding: 1.6rem 1.4rem;
     display: flex;
     gap: 1rem;
@@ -294,6 +330,7 @@
     overflow: hidden;
     box-sizing: border-box;
     width: 100%;
+    border-left: 3px solid var(--gold);
   }
   .deliverable-num {
     font-family: 'Cormorant Garamond'; font-size: 2rem;
@@ -329,6 +366,8 @@
   .method-card {
     background: var(--white); padding: 2.4rem 2rem;
     position: relative;
+    border-top: 3px solid var(--gold);
+    box-shadow: 0 1px 8px rgba(0,0,0,0.04);
   }
   .method-card::after {
     content: ''; position: absolute; bottom: 0; left: 0; right: 0;
@@ -342,7 +381,7 @@
     text-transform: uppercase;
   }
   .method-card h4 {
-    font-family: 'Noto Serif TC'; font-size: 1.04rem; font-weight: 500;
+    font-family: 'Noto Serif TC'; font-size: 1.1rem; font-weight: 700;
     margin-bottom: 0.8rem; color: var(--ink);
   }
   .method-card p { font-size: 0.9rem; color: var(--mid); line-height: 1.88; }
@@ -358,7 +397,7 @@
     margin-top: 3rem;
   }
   .sample-card {
-    background: var(--white); border: 1px solid var(--border);
+    background: var(--section-warm); border: 1.5px solid var(--gold-pale);
     padding: 1.5rem;
     display: flex; flex-direction: column; gap: 0.8rem;
   }
@@ -382,7 +421,8 @@
   }
   .not-for-item {
     display: flex; align-items: flex-start; gap: 0.8rem;
-    background: var(--white); padding: 1rem 1.4rem; border-radius: 2px;
+    background: var(--section-stone); padding: 1.1rem 1.4rem; border-radius: 2px;
+    border-left: 3px solid var(--gold);
   }
   .not-for-icon { color: var(--gold); font-size: 0.8rem; margin-top: 0.2rem; flex-shrink: 0; }
   .not-for-text { font-size: 0.92rem; color: var(--mid); }
@@ -397,29 +437,32 @@
     display: flex; align-items: center; gap: 1rem; margin: 3.5rem 0 1.5rem;
   }
   .plans-group-label h3 {
-    font-family: 'Noto Serif TC'; font-size: 1.1rem; font-weight: 500;
-    white-space: nowrap;
+    font-family: 'Noto Serif TC'; font-size: 1.2rem; font-weight: 700;
+    white-space: nowrap; color: var(--ink);
   }
   .plans-group-label::after {
     content: ''; flex: 1; height: 1px; background: var(--border);
   }
   .plans-group-label .tag {
-    font-size: 0.72rem; color: var(--mid); letter-spacing: 0.06em;
-    padding: 0.2rem 0.7rem; border: 1px solid var(--border); border-radius: 12px;
-    white-space: nowrap;
+    font-size: 0.72rem; color: var(--white); letter-spacing: 0.06em;
+    padding: 0.28rem 0.85rem;
+    background: linear-gradient(135deg, #c9a96e 0%, #b89a5c 100%);
+    border-radius: 12px; white-space: nowrap; font-weight: 500;
   }
   .plan-cards {
     display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px;
   }
   .plan-card {
-    background: var(--white); padding: 2.4rem 2rem;
+    background: var(--section-warm); padding: 2.4rem 2rem;
     display: flex; flex-direction: column;
     position: relative; overflow: hidden;
     box-sizing: border-box; width: 100%;
     min-width: 0; word-break: keep-all;
+    border-top: 3px solid var(--gold-pale);
   }
   .plan-card.featured {
     background: var(--ink); color: var(--white);
+    border-top: 3px solid var(--gold);
   }
   .plan-card.featured .plan-price,
   .plan-card.featured .plan-tagline,
@@ -427,36 +470,39 @@
   .plan-card.featured .plan-fit-title,
   .plan-card.featured .plan-fit-item,
   .plan-card.featured .plan-get-item,
-  .plan-card.featured .plan-get-title { color: rgba(255,255,255,0.85); }
-  .plan-card.featured h3 { color: var(--white); }
+  .plan-card.featured .plan-get-title { color: rgba(255,255,255,0.8); }
+  .plan-card.featured .plan-price { color: rgba(255,255,255,0.65); font-size: 1rem; }
+  .plan-card.featured h3 { color: var(--white); font-size: 1.25rem; }
   .plan-badge {
     position: absolute; top: 0; right: 0;
-    background: var(--gold); color: var(--white);
-    font-size: 0.65rem; padding: 0.25rem 0.7rem;
-    letter-spacing: 0.06em;
+    background: linear-gradient(135deg, #c9a96e 0%, #9a7f48 100%);
+    color: var(--white);
+    font-size: 0.68rem; padding: 0.3rem 0.85rem;
+    letter-spacing: 0.06em; font-weight: 600;
   }
   .plan-type {
-    font-size: 0.68rem; letter-spacing: 0.12em; color: var(--gold);
-    text-transform: uppercase; margin-bottom: 0.5rem;
+    font-size: 0.7rem; letter-spacing: 0.14em; color: var(--gold);
+    text-transform: uppercase; margin-bottom: 0.6rem; font-weight: 600;
+    font-family: 'Noto Sans TC', sans-serif;
   }
   .plan-card h3 {
-    font-family: 'Noto Serif TC'; font-size: 1.02rem; font-weight: 500;
-    color: var(--ink); margin-bottom: 0.4rem;
+    font-family: 'Noto Serif TC'; font-size: 1.25rem; font-weight: 700;
+    color: var(--ink); margin-bottom: 0.5rem; line-height: 1.4;
   }
-  .plan-tagline { font-size: 0.87rem; color: var(--mid); margin-bottom: 1.2rem; line-height: 1.65; }
+  .plan-tagline { font-size: 0.86rem; color: var(--mid); margin-bottom: 1rem; line-height: 1.65; }
   .plan-price {
-    font-family: 'Cormorant Garamond'; font-size: 1.8rem;
-    color: var(--ink); font-weight: 400; margin-bottom: 0.3rem;
+    font-family: 'Noto Sans TC'; font-size: 1.05rem;
+    color: var(--mid); font-weight: 400; margin-bottom: 0.2rem;
   }
   .plan-price-note { font-size: 0.77rem; color: var(--gold); margin-bottom: 1.4rem; }
   .plan-divider { border: none; border-top: 1px solid var(--border); margin: 1.2rem 0; }
   .plan-card.featured .plan-divider { border-color: rgba(255,255,255,0.15); }
   .plan-fit-title, .plan-get-title {
-    font-size: 0.72rem; letter-spacing: 0.08em; color: var(--gold);
-    text-transform: uppercase; margin-bottom: 0.6rem; font-weight: 400;
+    font-size: 0.72rem; letter-spacing: 0.1em; color: var(--gold);
+    text-transform: uppercase; margin-bottom: 0.7rem; font-weight: 700;
   }
   .plan-fit-item, .plan-get-item {
-    font-size: 0.89rem; color: var(--mid); padding: 0.3rem 0;
+    font-size: 0.89rem; color: var(--ink); padding: 0.3rem 0;
     padding-left: 1rem; position: relative; line-height: 1.6;
   }
   .plan-fit-item::before, .plan-get-item::before {
@@ -465,16 +511,32 @@
   .plan-desc { font-size: 0.89rem; color: var(--mid); line-height: 1.85; margin-bottom: 1.2rem; }
   .plan-card .btn { margin-top: auto; padding-top: 1.6rem; }
   .plan-card .btn a {
-    display: block; text-align: center; padding: 0.85rem;
-    font-size: 0.87rem; letter-spacing: 0.05em; text-decoration: none;
-    border-radius: 2px; transition: all 0.25s;
-    border: 1px solid var(--ink); color: var(--ink);
+    display: block; text-align: center; padding: 0.95rem;
+    font-size: 0.88rem; letter-spacing: 0.06em; text-decoration: none;
+    border-radius: 2px; transition: all 0.3s;
+    background: linear-gradient(135deg, #c9a96e 0%, #b89a5c 50%, #9a7f48 100%);
+    color: var(--white); font-weight: 600;
+    border: none;
+    box-shadow: 0 2px 10px rgba(184,154,92,0.3);
   }
-  .plan-card .btn a:hover { background: var(--ink); color: var(--white); }
+  .plan-card .btn a:hover {
+    background: linear-gradient(135deg, #b89a5c 0%, #9a7f48 100%);
+    box-shadow: 0 4px 16px rgba(184,154,92,0.45);
+    transform: translateY(-1px);
+  }
+  .plan-card.featured .btn {
+    padding-top: 1.6rem;
+    margin-top: auto;
+  }
   .plan-card.featured .btn a {
-    background: var(--gold); color: var(--white); border-color: var(--gold);
+    background: linear-gradient(135deg, #c9a96e 0%, #b89a5c 50%, #9a7f48 100%);
+    color: var(--white); border-color: transparent;
+    box-shadow: 0 2px 12px rgba(184,154,92,0.4);
   }
-  .plan-card.featured .btn a:hover { background: #9a7f48; border-color: #9a7f48; }
+  .plan-card.featured .btn a:hover {
+    background: linear-gradient(135deg, #b89a5c 0%, #9a7f48 100%);
+    box-shadow: 0 4px 18px rgba(184,154,92,0.5);
+  }
 
   /* Decision plan */
   .plan-decision {
@@ -503,14 +565,17 @@
     font-size: 0.75rem; color: rgba(255,255,255,0.45); line-height: 1.7; margin-top: 1rem;
   }
   .plan-decision .btn a {
-    display: inline-block; background: var(--white); color: var(--ink);
-    padding: 0.85rem 2.2rem; text-decoration: none; font-size: 0.82rem;
-    letter-spacing: 0.06em; border-radius: 2px; transition: all 0.25s;
-    margin-top: 1.5rem;
+    display: inline-block;
+    background: linear-gradient(135deg, #c9a96e 0%, #b89a5c 50%, #9a7f48 100%);
+    color: var(--white);
+    padding: 0.9rem 2.4rem; text-decoration: none; font-size: 0.85rem;
+    letter-spacing: 0.06em; border-radius: 2px; transition: all 0.3s;
+    margin-top: 1.5rem; font-weight: 500;
+    box-shadow: 0 2px 12px rgba(184,154,92,0.35);
   }
-  .plan-decision .btn a:hover { background: var(--gold); color: var(--white); }
+  .plan-decision .btn a:hover { background: #9a7f48; transform: translateY(-1px); }
   .plans-note {
-    background: var(--white); border: 1px solid var(--border);
+    background: var(--section-warm); border: 1.5px solid var(--gold-pale);
     padding: 1.4rem 1.4rem; margin-top: 2.5rem;
     font-size: 0.9rem; color: var(--mid); line-height: 1.8;
     display: flex; gap: 0.75rem; align-items: flex-start;
@@ -542,15 +607,17 @@
     margin-bottom: 1.5px;
   }
   .testimonial-case {
-    background: var(--white); padding: 2rem;
+    background: var(--section-warm); padding: 2rem;
+    border-top: 3px solid var(--gold);
   }
   .testimonial-case-tag {
     display: inline-block; font-size: 0.72rem; letter-spacing: 0.08em;
-    color: var(--gold); border: 1px solid var(--gold-light);
-    padding: 0.18rem 0.6rem; border-radius: 10px; margin-bottom: 0.9rem;
+    color: var(--white); font-weight: 500;
+    background: linear-gradient(135deg, #c9a96e 0%, #b89a5c 100%);
+    padding: 0.26rem 0.75rem; border-radius: 10px; margin-bottom: 0.9rem;
   }
   .testimonial-case h4 { font-family: 'Noto Serif TC'; font-size: 0.9rem; font-weight: 500; margin-bottom: 0.4rem; }
-  .testimonial-case-row { font-size: 0.86rem; color: var(--mid); margin-bottom: 0.35rem; }
+  .testimonial-case-row { font-size: 0.88rem; color: var(--ink); margin-bottom: 0.35rem; }
   .testimonial-case-row strong { color: var(--ink); font-weight: 500; }
   .screenshots-grid {
     display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5px;
@@ -602,12 +669,18 @@
   .faq-item {
     border-bottom: 1px solid var(--border);
     overflow: hidden;
+    transition: background 0.25s;
+  }
+  .faq-item.open {
+    background: var(--section-warm);
+    border-radius: 2px;
+    padding: 0 1rem;
   }
   .faq-q {
     width: 100%; background: none; border: none; cursor: pointer;
     display: flex; justify-content: space-between; align-items: center;
     padding: 1.4rem 0; text-align: left;
-    font-family: 'Noto Serif TC'; font-size: 1rem; font-weight: 500;
+    font-family: 'Noto Serif TC'; font-size: 1.05rem; font-weight: 600;
     color: var(--ink); gap: 1rem;
   }
   .faq-q span { flex: 1; line-height: 1.6; }
@@ -647,17 +720,25 @@
   .cta-section p { color: rgba(255,255,255,0.6); font-size: 0.88rem; line-height: 1.9; max-width: 480px; margin: 0 auto 2.5rem; }
   .cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
   .btn-cta-white {
-    display: inline-block; background: var(--white); color: var(--ink);
-    padding: 0.9rem 2.2rem; text-decoration: none; font-size: 0.85rem;
-    letter-spacing: 0.06em; border-radius: 2px; transition: all 0.25s;
+    display: inline-block;
+    background: linear-gradient(135deg, #c9a96e 0%, #b89a5c 50%, #9a7f48 100%);
+    color: var(--white);
+    padding: 1rem 2.4rem; text-decoration: none; font-size: 0.88rem;
+    letter-spacing: 0.07em; border-radius: 2px; transition: all 0.3s; font-weight: 500;
+    box-shadow: 0 2px 12px rgba(184,154,92,0.35);
   }
-  .btn-cta-white:hover { background: var(--gold); color: var(--white); }
+  .btn-cta-white:hover {
+    background: linear-gradient(135deg, #b89a5c 0%, #9a7f48 100%);
+    transform: translateY(-1px);
+  }
   .btn-cta-outline {
-    display: inline-block; border: 1px solid rgba(255,255,255,0.4); color: rgba(255,255,255,0.8);
-    padding: 0.9rem 2.2rem; text-decoration: none; font-size: 0.85rem;
-    letter-spacing: 0.06em; border-radius: 2px; transition: all 0.25s;
+    display: inline-block;
+    border: 1.5px solid var(--gold-light);
+    color: var(--gold-light);
+    padding: 1rem 2.2rem; text-decoration: none; font-size: 0.88rem;
+    letter-spacing: 0.06em; border-radius: 2px; transition: all 0.3s; font-weight: 500;
   }
-  .btn-cta-outline:hover { border-color: var(--white); color: var(--white); }
+  .btn-cta-outline:hover { background: var(--gold); border-color: var(--gold); color: var(--white); }
 
   /* ── FOOTER ── */
   footer {
@@ -686,7 +767,7 @@
 
     /* ② Hero 說明文字：靠左讀、不置中，避免最後孤行 */
     .hero-desc {
-      text-align: left;
+      text-align: center;
       font-size: 0.91rem;
       line-height: 1.85;
       max-width: 100%;
@@ -799,6 +880,18 @@
     .hero-btns a { text-align: center; }
 
     .section { padding: 64px 5%; }
+
+    /* 1599 featured plan btn — pin to bottom */
+    .plan-card.featured {
+      min-height: auto;
+    }
+    .plan-card.featured .btn {
+      margin-top: 2rem;
+      padding-top: 0;
+    }
+
+    /* hero desc centre on tablet */
+    .hero-desc { text-align: center; }
   }
   @media (max-width: 600px) {
     .screenshots-grid { grid-template-columns: repeat(2, 1fr); }
@@ -844,23 +937,25 @@
   <h1 class="hero-title"><span class="brand-num">4848</span><span class="title-sep">｜</span><em>人生結構分析</em></h1>
   <p class="hero-sub">by StateFlow Lab</p>
   <p class="hero-desc">
-    幫你看清人生卡點、風險與下一步方向的分析報告。<br>
-    適合正卡在工作事業、情感關係、人生方向的人。<br>
-    提供出生資料與問題，取得分析與決策建議。<br><br>
-    <strong>你不是沒能力，而是不知道自己到底卡在哪裡。</strong>
+    <span class="hero-tagline">
+      幫你看清人生卡點、風險與下一步方向。
+    </span>
+    <span class="hero-meta">
+      適合正卡在工作事業、情感關係、人生方向的人。<br>
+      提供個人資料，取得分析與決策。
+    </span>
   </p>
   <div class="hero-btns">
     <a href="https://lihi.vip/WuNzM" target="_blank" class="btn-primary">申請 4848｜人生結構分析 →</a>
-    <a href="https://line.me/R/ti/p/@612kvefo" target="_blank" class="btn-outline">LINE 諮詢 @612kvefo</a>
   </div>
-  <div class="scroll-hint">Scroll</div>
+  <div class="scroll-hint"></div>
 </section>
 
 <!-- 02 PAIN POINTS -->
-<section class="section section-alt" id="who">
+<section class="section" id="who" style="background:var(--section-stone)">
   <div class="container">
     <div class="section-intro">
-      <span class="label">你是不是也卡在這些問題裡</span>
+      <span class="label-block">你是不是也卡在這些問題裡</span>
       <h2>你不是沒有努力，<br>而是一直沒有把問題看清楚。</h2>
       <p class="lead">你不是不想改變，只是不知道最該先處理哪一件。</p>
     </div>
@@ -898,9 +993,9 @@
 </section>
 
 <!-- 03 DELIVERABLES -->
-<section class="section" id="what">
+<section class="section section-alt" id="what">
   <div class="container">
-    <span class="label">你會拿到什麼</span>
+    <span class="label-block">你會拿到什麼</span>
     <h2>你拿到的，<br>不會只是幾句模糊描述。</h2>
     <p class="lead" style="max-width:560px">4848 會依照你選擇的版本，整理成一份可閱讀、可對照、可幫助你判斷下一步的分析報告檔案。</p>
     <div class="deliverable-grid">
@@ -938,10 +1033,10 @@
 </section>
 
 <!-- 04 METHOD -->
-<section class="section section-alt" id="method">
+<section class="section" id="method" style="background:var(--section-sage)">
   <div class="container">
     <div class="section-intro" style="max-width:560px; margin:0 auto 0.5rem">
-      <span class="label" style="display:block; text-align:center">4848 怎麼幫你看清問題</span>
+      <span class="label-block" style="display:flex">4848 怎麼幫你看清問題</span>
       <h2 style="text-align:center">4848 不是算命，<br>它是一套人生結構分析系統。</h2>
       <p class="lead" style="text-align:center">很多人卡住，不是因為不夠努力。而是整體狀態、問題節點、眼前選擇，一直沒有被放在一起看。</p>
     </div>
@@ -969,10 +1064,10 @@
 </section>
 
 <!-- 06 NOT FOR YOU -->
-<section class="section section-gold">
+<section class="section" style="background:var(--section-warm)">
   <div class="container">
     <div style="text-align:center; max-width:480px; margin:0 auto">
-      <span class="label" style="display:block; text-align:center">適合對象</span>
+      <span class="label-block" style="display:flex">適合對象</span>
       <h2>4848 可能不適合你，<br>如果你期待的是——</h2>
     </div>
     <div class="not-for-list">
@@ -1003,7 +1098,7 @@
 <section class="section" id="plans">
   <div class="container">
     <div class="plans-intro" style="text-align:center; max-width:540px; margin:0 auto">
-      <span class="label" style="display:block; text-align:center">方案選擇</span>
+      <span class="label-block" style="display:flex">方案選擇</span>
       <h2>先選你現在的問題類型，<br>再選適合的深度。</h2>
       <p class="lead" style="text-align:center">如果你還不確定，也可以先從最接近你目前狀態的入口開始。</p>
     </div>
@@ -1262,9 +1357,9 @@
 </style>
 
 <!-- 08 TESTIMONIALS -->
-<section class="section section-alt" id="feedback">
+<section class="section" id="feedback" style="background:var(--section-stone)">
   <div class="container">
-    <span class="label">客戶見證</span>
+    <span class="label-block">客戶見證</span>
     <h2>不是所有人都需要這份報告。<br>但對正在卡關的人，它常常是第一次把問題看清楚。</h2>
     <div class="gold-line"></div>
 
@@ -1321,7 +1416,7 @@
 <section class="section" id="faq">
   <div class="container">
     <div style="text-align:center; max-width:560px; margin:0 auto">
-      <span class="label" style="display:block; text-align:center">常見問題</span>
+      <span class="label-block" style="display:flex">常見問題</span>
       <h2>購買前你可能想知道的</h2>
     </div>
     <div class="faq-list">
@@ -1406,10 +1501,10 @@
 </section>
 
 <!-- 10 BRAND STORY -->
-<section class="section section-alt">
+<section class="section" style="background:var(--section-warm)">
   <div class="container">
     <div class="brand-story">
-      <span class="label" style="display:block; text-align:center">為什麼會有 4848</span>
+      <span class="label-block" style="display:flex">為什麼會有 4848</span>
       <h2>很多人以為自己的人生問題，<br>是情緒問題、意志力問題，<br>或只是運氣不好。</h2>
       <div class="gold-line" style="margin:1.5rem auto"></div>
       <p>但實際上，很多卡住都來自於更底層的結構沒有被看清楚。</p>
