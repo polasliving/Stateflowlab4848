@@ -221,7 +221,7 @@
     font-weight: 600; letter-spacing: 0.02em; line-height: 1.2;
     margin-bottom: 0.6rem;
   }
-  .hero-title em { font-style: italic; color: var(--gold); }
+  .hero-title em { font-style: italic; color: var(--gold); font-weight: 700; }
   .title-sep {
     color: var(--gold-light);
     font-weight: 300;
@@ -904,6 +904,9 @@
     .plan-decision-inner { flex-direction: column; gap: 1.5rem; word-break: keep-all; overflow-wrap: break-word; }
     .plan-decision::before { display: none; }
 
+    /* 隱藏 eyebrow 在手機版 */
+    .hero-eyebrow { display: none; }
+
     /* Hero title 垂直堆疊：4848 上方小字，人生結構分析 大字不斷行 */
     .hero-title {
       font-size: 1.9rem;
@@ -921,6 +924,8 @@
       font-size: 1.85rem;
       display: block;
       white-space: nowrap;
+      font-weight: 700;
+      font-style: italic;
     }
 
     /* Hero desc 靠左 */
@@ -1019,7 +1024,6 @@
 
 <!-- 01 HERO -->
 <section class="hero">
-  <p class="hero-eyebrow">StateFlow Lab</p>
   <h1 class="hero-title"><span class="brand-num">4848</span><span class="title-sep">｜</span><em>人生結構分析</em></h1>
   <p class="hero-sub">by StateFlow Lab</p>
   <p class="hero-desc">
