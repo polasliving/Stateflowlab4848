@@ -824,7 +824,12 @@
       max-width: 100%;
       padding: 0 0.2rem;
     }
-    .hero-title em { font-size: 1.65rem; }
+    .hero-title em {
+      font-size: clamp(2.5rem, 12vw, 3.2rem);
+      font-weight: 800;
+      white-space: nowrap;
+    }
+    .hero-title .brand-num { font-size: 1.3rem; letter-spacing: 0.18em; }
 
     /* ③ Section 引言段落：置左、不跨欄截斷 */
     .section-intro { text-align: left; }
@@ -909,23 +914,25 @@
 
     /* Hero title 垂直堆疊：4848 上方小字，人生結構分析 大字不斷行 */
     .hero-title {
-      font-size: 1.9rem;
+      font-size: 3rem;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 0.25rem;
+      gap: 0.15rem;
     }
     .title-sep { display: none; }
     .hero-title .brand-num {
-      font-size: 1.1rem;
-      letter-spacing: 0.14em;
+      font-size: 1.5rem;
+      letter-spacing: 0.18em;
+      font-weight: 700;
     }
     .hero-title em {
-      font-size: 1.85rem;
+      font-size: clamp(2.8rem, 13vw, 3.8rem);
       display: block;
       white-space: nowrap;
-      font-weight: 700;
+      font-weight: 800;
       font-style: italic;
+      line-height: 1.1;
     }
 
     /* Hero desc 靠左 */
