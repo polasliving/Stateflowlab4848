@@ -1000,15 +1000,15 @@
 .sample-report-inner{max-width:1000px;margin:0 auto}
 .sample-report-title{
   font-family:'Noto Serif TC',serif;
-  font-size:clamp(1.5rem,4vw,2.2rem);
+  font-size:clamp(1.6rem,4.5vw,2.4rem);
   font-weight:700;color:#1a1a1a;
-  text-align:center;margin:0 0 14px;letter-spacing:.04em
+  text-align:center;margin:0 0 18px;letter-spacing:.04em
 }
 .sample-report-sub{
   font-family:'Noto Sans TC',sans-serif;
-  font-size:clamp(0.88rem,2.2vw,0.98rem);
-  color:#666;text-align:center;line-height:1.9;
-  margin:0 0 52px;word-break:keep-all
+  font-size:clamp(0.95rem,2.4vw,1.08rem);
+  color:#3a3228;text-align:center;line-height:2.0;
+  margin:0 0 52px;word-break:keep-all;font-weight:500
 }
 .sr-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:28px}
 @media(max-width:768px){.sr-grid{grid-template-columns:repeat(2,1fr);gap:14px}}
@@ -1028,13 +1028,19 @@
 @media(max-width:768px){.sr-card img{height:170px}}
 @media(max-width:480px){.sr-card img{height:210px}}
 .sr-caption{
-  font-family:'Noto Sans TC',sans-serif;font-size:.8rem;
-  color:#7a6a52;padding:10px 14px 12px;line-height:1.6;
-  border-top:2px solid #b89a5c;word-break:keep-all
+  font-family:'Noto Sans TC',sans-serif;
+  font-size:clamp(0.88rem,2vw,0.95rem);
+  font-weight:600;
+  color:#3a2e20;
+  padding:12px 16px 14px;line-height:1.7;
+  border-top:2.5px solid #b89a5c;word-break:keep-all;
+  background:#fff;
 }
 .sr-note{
-  font-family:'Noto Sans TC',sans-serif;font-size:.8rem;
-  color:#b0a090;text-align:center;letter-spacing:.04em
+  font-family:'Noto Sans TC',sans-serif;
+  font-size:clamp(0.85rem,2vw,0.92rem);
+  font-weight:500;
+  color:#7a6a52;text-align:center;letter-spacing:.04em
 }
 /* ─── Lightbox ─── */
 #sr-lightbox{
@@ -1396,10 +1402,10 @@
     <div class="label-block" style="text-align:center;margin-bottom:12px">
       <span style="display:inline-block;font-family:'Noto Serif TC',serif;font-size:.88rem;font-weight:700;color:#b89a5c;letter-spacing:.12em;padding-bottom:6px;border-bottom:2px solid #b89a5c">報告範本</span>
     </div>
-    <h2 class="sample-report-title">全啟動整合版｜參考報告截圖</h2>
+    <h2 class="sample-report-title">報告內容</h2>
     <p class="sample-report-sub">
-      以下為實際交付報告的內頁截圖，每份報告依個案獨立撰寫<br>
-      版面結構相同，文字內容完全客製、不套用模板
+      以下為實際交付報告【全啟動整合版】的內頁畫面。<br>
+      每份報告依照個別版本設計結構，內容將依個案情形獨立撰寫。
     </p>
     <div class="sr-grid">
       <div class="sr-card" onclick="openLightbox(0)">
@@ -1427,7 +1433,7 @@
         <div class="sr-caption">物件開啟原則 ＋ 30天行動指引</div>
       </div>
     </div>
-    <p class="sr-note">點擊圖片可放大查看 &nbsp;·&nbsp; 報告以 PDF 形式交付，中文排版</p>
+    <p class="sr-note">點擊圖片可放大查看 &nbsp;·&nbsp; 報告以 PDF 形式交付</p>
   </div>
 </section>
 
